@@ -29,3 +29,4 @@ int main(void)
 	cin>>ar[i];
 	kclosest(ar,n,k,x);
 }
+//huhu
