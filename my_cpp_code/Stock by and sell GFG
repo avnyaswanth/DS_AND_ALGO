@@ -1,0 +1,30 @@
+vector<vector<int> > stockBuySell(vector<int> arr, int n){
+        vector<vector<int>> ans;
+        int bpidx = 0,spidx = 0;  // buy and sell price indexes;
+        int bprice = INT_MAX,sprice = 0;
+        for(int i=0;i<n;++i)
+        {
+            if(arr[i] < bprice && sprice == 0)
+            {
+                bprice = arr[i];
+                bpidx = i;
+                sprice = 0;
+            }
+            else if(arr[i] < sprice || i == n-1)
+            {
+                if(arr[i] > sprice)
+                spidx = i;
+                ans.push_back(vector<int>({bpidx,spidx}));
+                bprice = arr[i];
+                bpidx = i;
+                sprice = 0;
+            }
+            
+            if(i != bpidx && arr[i] > sprice)
+            {
+                sprice = arr[i];
+                spidx = i;
+            }
+        }
+        return ans;
+    }
